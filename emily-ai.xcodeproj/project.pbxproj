@@ -12,6 +12,15 @@
 		D036E8552BB7C42F0083B95F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D036E8542BB7C42F0083B95F /* Assets.xcassets */; };
 		D036E8582BB7C42F0083B95F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D036E8572BB7C42F0083B95F /* Preview Assets.xcassets */; };
 		D036E8622BB7C6FB0083B95F /* Transcriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = D036E8612BB7C6FB0083B95F /* Transcriber.swift */; };
+		D051B5F92BB7D01000D3061A /* VoiceCommandProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D051B5F82BB7D01000D3061A /* VoiceCommandProcessor.swift */; };
+		D051B5FC2BB80AAC00D3061A /* Assistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D051B5FB2BB80AAC00D3061A /* Assistant.swift */; };
+		D051B5FF2BB80B4400D3061A /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = D051B5FE2BB80B4400D3061A /* Action.swift */; };
+		D051B6012BB80B4E00D3061A /* ActionDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D051B6002BB80B4E00D3061A /* ActionDataType.swift */; };
+		D051B6032BB80B5B00D3061A /* ActionProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D051B6022BB80B5B00D3061A /* ActionProgressIndicator.swift */; };
+		D051B6052BB80B6A00D3061A /* ActionConfirmationDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D051B6042BB80B6A00D3061A /* ActionConfirmationDisplay.swift */; };
+		D051B6082BB80B8800D3061A /* RunShortcutCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D051B6072BB80B8800D3061A /* RunShortcutCode.swift */; };
+		D051B60C2BB80BAD00D3061A /* GetContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D051B60B2BB80BAD00D3061A /* GetContacts.swift */; };
+		D051B60E2BB80BB700D3061A /* BuiltInActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D051B60D2BB80BB700D3061A /* BuiltInActions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +31,15 @@
 		D036E8572BB7C42F0083B95F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D036E8592BB7C42F0083B95F /* emily_ai.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = emily_ai.entitlements; sourceTree = "<group>"; };
 		D036E8612BB7C6FB0083B95F /* Transcriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transcriber.swift; sourceTree = "<group>"; };
+		D051B5F82BB7D01000D3061A /* VoiceCommandProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceCommandProcessor.swift; sourceTree = "<group>"; };
+		D051B5FB2BB80AAC00D3061A /* Assistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assistant.swift; sourceTree = "<group>"; };
+		D051B5FE2BB80B4400D3061A /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		D051B6002BB80B4E00D3061A /* ActionDataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDataType.swift; sourceTree = "<group>"; };
+		D051B6022BB80B5B00D3061A /* ActionProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionProgressIndicator.swift; sourceTree = "<group>"; };
+		D051B6042BB80B6A00D3061A /* ActionConfirmationDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionConfirmationDisplay.swift; sourceTree = "<group>"; };
+		D051B6072BB80B8800D3061A /* RunShortcutCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunShortcutCode.swift; sourceTree = "<group>"; };
+		D051B60B2BB80BAD00D3061A /* GetContacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetContacts.swift; sourceTree = "<group>"; };
+		D051B60D2BB80BB700D3061A /* BuiltInActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltInActions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,9 +72,14 @@
 		D036E84F2BB7C42D0083B95F /* emily-ai */ = {
 			isa = PBXGroup;
 			children = (
+				D051B60A2BB80B9F00D3061A /* BuiltInActions */,
+				D051B6062BB80B7300D3061A /* Util */,
+				D051B5FA2BB8064800D3061A /* Assistant */,
+				D051B5F72BB7CD6900D3061A /* VoiceCommandProcessor */,
 				D036E8602BB7C6F10083B95F /* Transcriber */,
 				D036E8502BB7C42D0083B95F /* emily_aiApp.swift */,
 				D036E8522BB7C42D0083B95F /* ContentView.swift */,
+				D051B5FD2BB80B3B00D3061A /* Action */,
 				D036E8542BB7C42F0083B95F /* Assets.xcassets */,
 				D036E8592BB7C42F0083B95F /* emily_ai.entitlements */,
 				D036E8562BB7C42F0083B95F /* Preview Content */,
@@ -78,6 +101,50 @@
 				D036E8612BB7C6FB0083B95F /* Transcriber.swift */,
 			);
 			path = Transcriber;
+			sourceTree = "<group>";
+		};
+		D051B5F72BB7CD6900D3061A /* VoiceCommandProcessor */ = {
+			isa = PBXGroup;
+			children = (
+				D051B5F82BB7D01000D3061A /* VoiceCommandProcessor.swift */,
+			);
+			path = VoiceCommandProcessor;
+			sourceTree = "<group>";
+		};
+		D051B5FA2BB8064800D3061A /* Assistant */ = {
+			isa = PBXGroup;
+			children = (
+				D051B5FB2BB80AAC00D3061A /* Assistant.swift */,
+			);
+			path = Assistant;
+			sourceTree = "<group>";
+		};
+		D051B5FD2BB80B3B00D3061A /* Action */ = {
+			isa = PBXGroup;
+			children = (
+				D051B5FE2BB80B4400D3061A /* Action.swift */,
+				D051B6002BB80B4E00D3061A /* ActionDataType.swift */,
+				D051B6022BB80B5B00D3061A /* ActionProgressIndicator.swift */,
+				D051B6042BB80B6A00D3061A /* ActionConfirmationDisplay.swift */,
+			);
+			path = Action;
+			sourceTree = "<group>";
+		};
+		D051B6062BB80B7300D3061A /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				D051B6072BB80B8800D3061A /* RunShortcutCode.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		D051B60A2BB80B9F00D3061A /* BuiltInActions */ = {
+			isa = PBXGroup;
+			children = (
+				D051B60B2BB80BAD00D3061A /* GetContacts.swift */,
+				D051B60D2BB80BB700D3061A /* BuiltInActions.swift */,
+			);
+			path = BuiltInActions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,9 +217,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D051B6032BB80B5B00D3061A /* ActionProgressIndicator.swift in Sources */,
 				D036E8532BB7C42D0083B95F /* ContentView.swift in Sources */,
+				D051B5FF2BB80B4400D3061A /* Action.swift in Sources */,
 				D036E8512BB7C42D0083B95F /* emily_aiApp.swift in Sources */,
+				D051B6082BB80B8800D3061A /* RunShortcutCode.swift in Sources */,
 				D036E8622BB7C6FB0083B95F /* Transcriber.swift in Sources */,
+				D051B5F92BB7D01000D3061A /* VoiceCommandProcessor.swift in Sources */,
+				D051B60C2BB80BAD00D3061A /* GetContacts.swift in Sources */,
+				D051B5FC2BB80AAC00D3061A /* Assistant.swift in Sources */,
+				D051B6052BB80B6A00D3061A /* ActionConfirmationDisplay.swift in Sources */,
+				D051B6012BB80B4E00D3061A /* ActionDataType.swift in Sources */,
+				D051B60E2BB80BB700D3061A /* BuiltInActions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

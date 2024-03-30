@@ -17,15 +17,12 @@ class WhisperTranscriber: Transcriber {
     private var audioFilePath: URL?
     private let bus = 0
     private var transcribedChunksSubject = PassthroughSubject<TranscribedChunk, Error>()
-    private let thresholdLevel: Float = -40.0 // Adjust this threshold based on your needs
-    private let recordingFormat: AVAudioFormat
+    private let thresholdLevel: Float = -40.0 // dBFS. Adjust this threshold based on your needs
+    private let recordingFormat = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: 1)!
+    private var transcriptionStartTime: Date?
     private var cancellables = Set<AnyCancellable>()
     
     init() throws {
-        guard let format = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: 1) else {
-            throw NSError(domain: "WhisperTranscriber", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to create recording format"])
-        }
-        recordingFormat = format
         try setupAudioEngine()
     }
     
@@ -40,10 +37,10 @@ class WhisperTranscriber: Transcriber {
     
     private func processAudioBuffer(buffer: AVAudioPCMBuffer, when: AVAudioTime) {
         let level = analyzeAudioBuffer(buffer: buffer)
-        
         switch state {
         case .stopped, .stopping:
             if level > thresholdLevel {
+                transcriptionStartTime = Date() // Start time of audio signal
                 Task {
                     do {
                         try await startTranscription()
@@ -54,15 +51,50 @@ class WhisperTranscriber: Transcriber {
             }
         case .running, .starting:
             if level <= thresholdLevel {
+                let transcriptionEndTime = Date() // End time of audio signal
                 Task {
                     do {
-                        try await stopTranscription()
+                        try await stopTranscription(startTime: transcriptionStartTime, endTime: transcriptionEndTime)
                     } catch {
                         transcribedChunksSubject.send(completion: .failure(error))
                     }
                 }
-            } else {
+            } else if state == .running {
                 appendAudioData(buffer: buffer)
+            }
+        }
+    }
+    
+    // ... Other methods ...
+
+    func stopTranscription(startTime: Date?, endTime: Date) async throws {
+        guard state == .running else { return }
+        state = .stopping
+        audioFile = nil
+        guard let filePath = audioFilePath else { return }
+        
+        transcribeAudioFile(at: filePath, startTime: startTime, endTime: endTime)
+        
+        state = .stopped
+    }
+    
+    private func transcribeAudioFile(at path: URL, startTime: Date?, endTime: Date) {
+        Task {
+            do {
+                let pipe = try await WhisperKit()
+                let transcription = try await pipe.transcribe(audioPath: path.path).text
+                
+                let chunk = TranscribedChunk(
+                    text: transcription,
+                    audioSegmentData: try Data(contentsOf: path),
+                    startTimestamp: startTime ?? Date(),
+                    endTimestamp: endTime
+                )
+                
+                transcribedChunksSubject.send(chunk)
+                cleanupTranscriptionResources()
+            } catch {
+                transcribedChunksSubject.send(completion: .failure(error))
             }
         }
     }
@@ -106,15 +138,36 @@ class WhisperTranscriber: Transcriber {
         return state
     }
     
-    func getTranscribedChunksStream() -> AnyPublisher<TranscribedChunk, Error> {
-        return transcribedChunksSubject.eraseToAnyPublisher()
-    }
+    func getTranscribedChunksStream() -> AsyncThrowingStream<TranscribedChunk, Error> {
+            AsyncThrowingStream<TranscribedChunk, Error> { continuation in
+                // Subscription to the subject that emits new transcribed chunks
+                let subscription = self.transcribedChunksSubject.sink(
+                    receiveCompletion: { completion in
+                        // Handle the completion (either finished or failure with an error)
+                        if case let .failure(error) = completion {
+                            continuation.finish(throwing: error)
+                        } else {
+                            continuation.finish()
+                        }
+                    },
+                    receiveValue: { chunk in
+                        // Emit new chunks to the stream as they come in
+                        continuation.yield(chunk)
+                    }
+                )
+                
+                // Store the subscription so it doesn't get deallocated
+                continuation.onTermination = { @Sendable _ in
+                    subscription.cancel()
+                }
+            }
+        }
     
     private func transcribeAudioFile(at path: URL) {
         Task {
             do {
                 let pipe = try? await WhisperKit()
-                   let transcription = try? await pipe!.transcribe(audioPath: URL)?.text
+                let transcription = try? await pipe!.transcribe(audioPath: path.path)?.text
                     print(transcription)
                 
                 let chunk = TranscribedChunk(
@@ -142,3 +195,4 @@ class WhisperTranscriber: Transcriber {
         }
     }
 }
+

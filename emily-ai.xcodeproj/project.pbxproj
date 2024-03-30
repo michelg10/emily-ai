@@ -11,6 +11,7 @@
 		D036E8532BB7C42D0083B95F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D036E8522BB7C42D0083B95F /* ContentView.swift */; };
 		D036E8552BB7C42F0083B95F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D036E8542BB7C42F0083B95F /* Assets.xcassets */; };
 		D036E8582BB7C42F0083B95F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D036E8572BB7C42F0083B95F /* Preview Assets.xcassets */; };
+		D036E8622BB7C6FB0083B95F /* Transcriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = D036E8612BB7C6FB0083B95F /* Transcriber.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		D036E8542BB7C42F0083B95F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D036E8572BB7C42F0083B95F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D036E8592BB7C42F0083B95F /* emily_ai.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = emily_ai.entitlements; sourceTree = "<group>"; };
+		D036E8612BB7C6FB0083B95F /* Transcriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transcriber.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 		D036E84F2BB7C42D0083B95F /* emily-ai */ = {
 			isa = PBXGroup;
 			children = (
+				D036E8602BB7C6F10083B95F /* Transcriber */,
 				D036E8502BB7C42D0083B95F /* emily_aiApp.swift */,
 				D036E8522BB7C42D0083B95F /* ContentView.swift */,
 				D036E8542BB7C42F0083B95F /* Assets.xcassets */,
@@ -67,6 +70,14 @@
 				D036E8572BB7C42F0083B95F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D036E8602BB7C6F10083B95F /* Transcriber */ = {
+			isa = PBXGroup;
+			children = (
+				D036E8612BB7C6FB0083B95F /* Transcriber.swift */,
+			);
+			path = Transcriber;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +152,7 @@
 			files = (
 				D036E8532BB7C42D0083B95F /* ContentView.swift in Sources */,
 				D036E8512BB7C42D0083B95F /* emily_aiApp.swift in Sources */,
+				D036E8622BB7C6FB0083B95F /* Transcriber.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

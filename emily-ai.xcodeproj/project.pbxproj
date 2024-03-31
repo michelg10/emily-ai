@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0A5079702BB8A55A0014E757 /* WhisperTranscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A50796F2BB8A55A0014E757 /* WhisperTranscriber.swift */; };
+		927BF4412BB8D88200DFFB49 /* OpenAIVoiceCommandProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927BF4402BB8D88200DFFB49 /* OpenAIVoiceCommandProcessor.swift */; };
+		927BF4442BB8D95B00DFFB49 /* WhisperKit in Frameworks */ = {isa = PBXBuildFile; productRef = 927BF4432BB8D95B00DFFB49 /* WhisperKit */; };
 		D036E8512BB7C42D0083B95F /* emily_aiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D036E8502BB7C42D0083B95F /* emily_aiApp.swift */; };
 		D036E8532BB7C42D0083B95F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D036E8522BB7C42D0083B95F /* ContentView.swift */; };
 		D036E8552BB7C42F0083B95F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D036E8542BB7C42F0083B95F /* Assets.xcassets */; };
@@ -26,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		0A50796F2BB8A55A0014E757 /* WhisperTranscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhisperTranscriber.swift; sourceTree = "<group>"; };
+		927BF4402BB8D88200DFFB49 /* OpenAIVoiceCommandProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIVoiceCommandProcessor.swift; sourceTree = "<group>"; };
 		D036E84D2BB7C42D0083B95F /* emily-ai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "emily-ai.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D036E8502BB7C42D0083B95F /* emily_aiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emily_aiApp.swift; sourceTree = "<group>"; };
 		D036E8522BB7C42D0083B95F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -49,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				927BF4442BB8D95B00DFFB49 /* WhisperKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				D051B5F82BB7D01000D3061A /* VoiceCommandProcessor.swift */,
+				927BF4402BB8D88200DFFB49 /* OpenAIVoiceCommandProcessor.swift */,
 			);
 			path = VoiceCommandProcessor;
 			sourceTree = "<group>";
@@ -166,6 +171,9 @@
 			dependencies = (
 			);
 			name = "emily-ai";
+			packageProductDependencies = (
+				927BF4432BB8D95B00DFFB49 /* WhisperKit */,
+			);
 			productName = "emily-ai";
 			productReference = D036E84D2BB7C42D0083B95F /* emily-ai.app */;
 			productType = "com.apple.product-type.application";
@@ -194,6 +202,9 @@
 				Base,
 			);
 			mainGroup = D036E8442BB7C42D0083B95F;
+			packageReferences = (
+				927BF4422BB8D95B00DFFB49 /* XCRemoteSwiftPackageReference "WhisperKit" */,
+			);
 			productRefGroup = D036E84E2BB7C42D0083B95F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -227,6 +238,7 @@
 				D051B6082BB80B8800D3061A /* RunShortcutCode.swift in Sources */,
 				D036E8622BB7C6FB0083B95F /* Transcriber.swift in Sources */,
 				0A5079702BB8A55A0014E757 /* WhisperTranscriber.swift in Sources */,
+				927BF4412BB8D88200DFFB49 /* OpenAIVoiceCommandProcessor.swift in Sources */,
 				D051B5F92BB7D01000D3061A /* VoiceCommandProcessor.swift in Sources */,
 				D051B60C2BB80BAD00D3061A /* GetContacts.swift in Sources */,
 				D051B5FC2BB80AAC00D3061A /* Assistant.swift in Sources */,
@@ -367,7 +379,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"emily-ai/Preview Content\"";
-				DEVELOPMENT_TEAM = 9K2XM38XLK;
+				DEVELOPMENT_TEAM = 9K7KN6P278;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -394,7 +406,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"emily-ai/Preview Content\"";
-				DEVELOPMENT_TEAM = 9K2XM38XLK;
+				DEVELOPMENT_TEAM = 9K7KN6P278;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -433,6 +445,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		927BF4422BB8D95B00DFFB49 /* XCRemoteSwiftPackageReference "WhisperKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/argmaxinc/WhisperKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		927BF4432BB8D95B00DFFB49 /* WhisperKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 927BF4422BB8D95B00DFFB49 /* XCRemoteSwiftPackageReference "WhisperKit" */;
+			productName = WhisperKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D036E8452BB7C42D0083B95F /* Project object */;
 }

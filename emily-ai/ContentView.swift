@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var whisperTranscriber: WhisperTranscriber = .init()
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -16,6 +17,22 @@ struct ContentView: View {
             Text("Hello, world!")
         }
         .padding()
+        .onAppear {
+            Task.detached {
+                try! await whisperTranscriber.startTranscription()
+            }
+            Task.detached {
+                let stream = whisperTranscriber.getTranscribedChunksStream()
+                
+                do {
+                    for try await value in stream {
+                        print(value)
+                    }
+                } catch {
+                    print("Error: \(error)")
+                }
+            }
+        }
     }
 }
 

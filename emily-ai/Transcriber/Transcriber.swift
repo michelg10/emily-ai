@@ -4,8 +4,6 @@ import Foundation
 struct TranscribedChunk {
     /// The transcribed text of the audio chunk.
     let text: String
-    /// The raw audio data of the chunk.
-    let audioSegment: Data
     /// The timestamp indicating the start time of the audio chunk.
     let startTimestamp: Date
     /// The timestamp indicating the end time of the audio chunk.
